@@ -26,4 +26,5 @@ do
 done
 
 echo "Started processes: ${processes[@]}"
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 wait "${processes[@]}"
