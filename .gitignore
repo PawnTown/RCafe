@@ -1,1 +1,6 @@
+# cloned apps
 apps
+
+# local env files
+.env
+.env*.local
