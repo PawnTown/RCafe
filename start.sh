@@ -19,6 +19,9 @@ do
   if [ "$type" = "go" ]; then
     cd ${fullDir} && go get ./... && go run ${fullDir}/src/cmd &
     processes+=("$!")
+  elif [ "$type" = "go:live" ]; then
+    cd ${fullDir} && go get ./... && realize start --path="${fullDir}/src/cmd" &
+    processes+=("$!")
   elif [ "$type" = "next" ]; then
     cd ${fullDir} && yarn && yarn dev &
     processes+=("$!")
