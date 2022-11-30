@@ -6,8 +6,8 @@ These scripts can be used to create a development environment.
 
 Before you start, make sure you have your `env.local` files ready:
 
-- app.local.env
-- api.local.env
+- .env.app.local
+- .env.api.local
 
 
 These files will be injected into the project folders during setup.
