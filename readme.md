@@ -15,6 +15,8 @@ These files will be injected into the project folders during setup.
 You will also need following software:
 
 - Docker
+- Yarn (`npm i -g yarn`)
+- CoreUtils (`brew install coreutils`)
 
 If you have that ready, run the setup with:
 
