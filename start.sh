@@ -15,6 +15,10 @@ do
   name=${appArr[1]}
 
   fullDir="${APPS_FOLDER}/${name}"
+  (
+    cd "$fullDir"
+    git pull
+  )
 
   if [ "$type" = "go" ]; then
     cd ${fullDir} && go get ./... && go run ${fullDir}/src/cmd &
