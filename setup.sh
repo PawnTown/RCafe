@@ -35,11 +35,7 @@ do
   fullDir="${APPS_FOLDER}/${name}"
 
   git clone ${repo} "${fullDir}"
-
-  if [ -f "$envInFile" ]; then
-      echo "$envInFile will be injected as $envOutFile..."
-      cp "$envInFile" "${fullDir}/${envOutFile}"
-  else 
-      echo "WARNING: $envInFile does not exist. No env file will be injected.\nCreate it manually later at ${fullDir}/${envOutFile}."
-  fi
 done
+
+# Inject envs
+source "$SCRIPT_DIR/inject-env.sh"

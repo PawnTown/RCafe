@@ -7,4 +7,8 @@ export APPS=(
   "go pawn.town.api git@github.com:mono424/pawn.town.api.git .env.api.local .env.dev"
 )
 
+export ENV_FOLDER="${SCRIPT_DIR}/env"
+export ENV_REPO="git@github.com:PawnTown/env.git"
+export ENV_BRANCH="develop"
+
 echo "Config loaded."
