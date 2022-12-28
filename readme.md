@@ -31,3 +31,10 @@ If you want to start the dev environment, just run:
 ```bash
 ./start.sh
 ```
+
+If you want to run multiple projects just pass `t`-Flag with projects you want to start.
+
+For example if you also want to run `live` and `cloud`, do:
+```bash
+./start.sh -t live,cloud
+```

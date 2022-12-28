@@ -3,6 +3,15 @@
 SCRIPT=$(realpath "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
 
+# Load Arguments
+tags=("-")
+while getopts t: flag
+do
+    case "${flag}" in
+        t) tags+=(${OPTARG//,/ })
+    esac
+done
+
 # Load config
 source "$SCRIPT_DIR/config.sh"
 
@@ -13,6 +22,11 @@ do
   appArr=($app)
   type=${appArr[0]}
   name=${appArr[1]}
+  tag=${appArr[5]}
+
+  if [[ ! " ${tags[*]} " =~ " ${tag} " ]]; then
+    continue
+  fi
 
   fullDir="${APPS_FOLDER}/${name}"
   (
