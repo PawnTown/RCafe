@@ -25,7 +25,10 @@ do
   tag=${appArr[5]}
 
   if [[ ! " ${tags[*]} " =~ " ${tag} " ]]; then
+    echo "⚪️ Skipped $name: Tag(${tag}) was not found"
     continue
+  else
+    echo "✅ Run $name"
   fi
 
   fullDir="${APPS_FOLDER}/${name}"
