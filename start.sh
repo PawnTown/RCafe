@@ -3,12 +3,22 @@
 SCRIPT=$(realpath "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
 
+# Help
+if [ "$1" = "help" ]; then
+  echo "Usage: ./start.sh [-t tag1,tag2] [-b branch]"
+  echo "  -t: Run additional apps with the specified tags"
+  echo "  -b: Try to checkout the specified branch on all apps"
+  exit 0
+fi
+
 # Load Arguments
 tags=("-")
-while getopts t: flag
+branch=""
+while getopts t:b: flag
 do
     case "${flag}" in
-        t) tags+=(${OPTARG//,/ })
+        t) tags+=(${OPTARG//,/ });;
+        b) branch=(${OPTARG//,/ })
     esac
 done
 
@@ -25,7 +35,7 @@ do
   tag=${appArr[5]}
 
   if [[ ! " ${tags[*]} " =~ " ${tag} " ]]; then
-    echo "⚪️ Skipped $name: Tag(${tag}) was not found"
+    echo "⚪️ Skipped $name: Tag(${tag}) was not set"
     continue
   else
     echo "✅ Run $name"
@@ -34,6 +44,9 @@ do
   fullDir="${APPS_FOLDER}/${name}"
   (
     cd "$fullDir"
+    if [ "$branch" != "" ]; then
+      git checkout "$branch"
+    fi
     git pull
   )
 
