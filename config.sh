@@ -7,7 +7,7 @@ export APPS=(
   "next pawn.town.app git@github.com:PawnTown/pawn.town.app.git .env.app.local .env.local -"
   "go pawn.town.api git@github.com:PawnTown/pawn.town.api.git .env.api.local .env.dev -"
   # PawnTown Live
-  "go live.pawn.town.api git@github.com:PawnTown/live.pawn.town.api.git .env.live.api.local env.dev live"
+  "go live.pawn.town.api git@github.com:PawnTown/live.pawn.town.api.git .env.live.api.local .env.dev live"
   # PawnTown Cloud
   "next cloud.pawn.town.app git@github.com:PawnTown/cloud.pawn.town.app.git .env.cloud.app.local .env.local cloud"
   "go cloud.pawn.town.api git@github.com:PawnTown/cloud.pawn.town.api.git .env.cloud.api.local .env.dev cloud"
