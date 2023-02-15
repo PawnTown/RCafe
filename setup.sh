@@ -28,7 +28,7 @@ do
 done
 
 # If no arguments are passed, a full setup will be performed
-if [ ! $setup_database ] && [ ! $seed_database ] && [ ! $setup_apps ] && [ ! $inject_secrets ]; then
+if [ $setup_database = false ] && [ $seed_database = false ] && [ $setup_apps = false ] && [ $inject_secrets = false ]; then
   echo "No arguments are passed, a full setup will be performed"
   setup_database=true
   seed_database=true
