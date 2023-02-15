@@ -52,7 +52,7 @@ if [ $setup_database = true ]; then
   docker run --detach --name pawntown -e MYSQL_ROOT_PASSWORD=example -p 3307:3306 mariadb:latest
 
   echo "Sleeping for 10 seconds"
-  sleep 10s
+  sleep 10
 
   echo "Setup DB"
   mysql --host="127.0.0.1" --port=3307 --user=root --password=example --force -e "CREATE DATABASE pawntown"
