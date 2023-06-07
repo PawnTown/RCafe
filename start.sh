@@ -59,6 +59,9 @@ do
   elif [ "$type" = "next" ]; then
     cd ${fullDir} && yarn && yarn dev &
     processes+=("$!")
+  elif [ "$type" = "node" ]; then
+    cd ${fullDir} && yarn && yarn dev &
+    processes+=("$!")
   fi
 done
 
