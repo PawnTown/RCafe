@@ -8,6 +8,8 @@ export APPS=(
   "go pawn.town.api git@github.com:PawnTown/pawn.town.api.git .env.api.local .env.dev -"
   # PawnTown Live
   "go live.pawn.town.api git@github.com:PawnTown/live.pawn.town.api.git .env.live.api.local .env.dev live"
+  # Streamer Service
+  "node pawntown.streamer.service git@github.com:PawnTown/pawntown.streamer.service.git .env.streamer.service.local .env.local streamer"
   # PawnTown Cloud
   "next cloud.pawn.town.app git@github.com:PawnTown/cloud.pawn.town.app.git .env.cloud.app.local .env.local cloud"
   "go cloud.pawn.town.api git@github.com:PawnTown/cloud.pawn.town.api.git .env.cloud.api.local .env.dev cloud"
