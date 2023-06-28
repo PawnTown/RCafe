@@ -8,6 +8,7 @@ export APPS=(
   "go pawn.town.api git@github.com:PawnTown/pawn.town.api.git .env.api.local .env.dev -"
   # PawnTown Live
   "go live.pawn.town.api git@github.com:PawnTown/live.pawn.town.api.git .env.live.api.local .env.dev live"
+  "livekit - - - livekit"
   # Capture Service
   "node pawntown.capture.service git@github.com:PawnTown/pawntown.capture.service.git .env.capture.service.local .env.local capture"
   # PawnTown Cloud

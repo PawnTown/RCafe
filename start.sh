@@ -62,6 +62,9 @@ do
   elif [ "$type" = "node" ]; then
     cd ${fullDir} && yarn && yarn dev &
     processes+=("$!")
+  elif [ "$type" = "livekit" ]; then
+    cd livekit-server --dev &
+    processes+=("$!")
   fi
 done
 

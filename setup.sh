@@ -7,12 +7,14 @@ setup_database=false
 seed_database=false
 setup_apps=false
 inject_secrets=false
+install_livekit=false
 
 if [ "$1" = "help" ]; then
   echo "Usage: ./setup.sh [-d] [-s]"
   echo "  -d: Setup database"
   echo "  -a: Setup apps"
   echo "  -i: Inject secrets"
+  echo "  -i: Install Livekit"
   echo "If no arguments are passed, a full setup will be performed"
   exit 0
 fi
@@ -24,16 +26,18 @@ do
         s) seed_database=true;;
         a) setup_apps=true;;
         i) inject_secrets=true;;
+        l) install_livekit=true;;
     esac
 done
 
 # If no arguments are passed, a full setup will be performed
-if [ $setup_database = false ] && [ $seed_database = false ] && [ $setup_apps = false ] && [ $inject_secrets = false ]; then
+if [ $setup_database = false ] && [ $seed_database = false ] && [ $setup_apps = false ] && [ $inject_secrets = false ]; && [ $install_livekit = false ]; then
   echo "No arguments are passed, a full setup will be performed"
   setup_database=true
   seed_database=true
   setup_apps=true
   inject_secrets=true
+  install_livekit=true
 fi
 
 # Load config
@@ -82,4 +86,9 @@ fi
 # Inject secrets
 if [ $inject_secrets = true ]; then
   source "$SCRIPT_DIR/inject-env.sh"
+fi
+
+# Install Livekit
+if [ $install_livekit = true ]; then
+  brew install livekit
 fi
