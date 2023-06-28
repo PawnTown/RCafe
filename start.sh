@@ -32,6 +32,7 @@ do
   appArr=($app)
   type=${appArr[0]}
   name=${appArr[1]}
+  gitUrl=${appArr[2]}
   tag=${appArr[5]}
 
   if [[ ! " ${tags[*]} " =~ " ${tag} " ]]; then
@@ -41,14 +42,18 @@ do
     echo "✅ Run $name"
   fi
 
-  fullDir="${APPS_FOLDER}/${name}"
-  (
-    cd "$fullDir"
-    if [ "$branch" != "" ]; then
-      git checkout "$branch"
-    fi
-    git pull
-  )
+  if [ "$gitUrl" = "-" ]; then
+    echo "No git url set for $name"
+  else
+    fullDir="${APPS_FOLDER}/${name}"
+    (
+      cd "$fullDir"
+      if [ "$branch" != "" ]; then
+        git checkout "$branch"
+      fi
+      git pull
+    )
+  fi
 
   if [ "$type" = "go" ]; then
     cd ${fullDir} && go get ./... && go run ${fullDir}/src/cmd &
@@ -63,7 +68,7 @@ do
     cd ${fullDir} && yarn && yarn dev &
     processes+=("$!")
   elif [ "$type" = "livekit" ]; then
-    cd livekit-server --dev &
+    livekit-server --dev &
     processes+=("$!")
   fi
 done
