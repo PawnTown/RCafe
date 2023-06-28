@@ -67,6 +67,9 @@ do
   elif [ "$type" = "node" ]; then
     cd ${fullDir} && yarn && yarn dev &
     processes+=("$!")
+  elif [ "$type" = "livego" ]; then
+    docker run --rm -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 gwuhaolin/livego &
+    processes+=("$!")
   elif [ "$type" = "livekit" ]; then
     livekit-server --dev --redis-host 127.0.0.1:6379 &
     processes+=("$!")
@@ -74,7 +77,7 @@ do
     docker run --rm \
     -e EGRESS_CONFIG_FILE=/out/config.yaml \
     -v ${SCRIPT_DIR}/livekit_egress:/out \
-    livekit/egress
+    livekit/egress &
     processes+=("$!")
   fi
 done
