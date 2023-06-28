@@ -68,7 +68,13 @@ do
     cd ${fullDir} && yarn && yarn dev &
     processes+=("$!")
   elif [ "$type" = "livekit" ]; then
-    livekit-server --dev &
+    livekit-server --dev --redis-host 127.0.0.1:6379 &
+    processes+=("$!")
+  elif [ "$type" = "livekit-egress" ]; then
+    docker run --rm \
+    -e EGRESS_CONFIG_FILE=/out/config.yaml \
+    -v ${SCRIPT_DIR}/livekit_egress:/out \
+    livekit/egress
     processes+=("$!")
   fi
 done
